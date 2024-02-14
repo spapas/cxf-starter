@@ -1,19 +1,24 @@
 package gr.hcg.ws;
 
 import jakarta.xml.ws.Endpoint;
+import jakarta.xml.ws.EndpointContext;
 import org.apache.cxf.ext.logging.LoggingFeature;
 import org.apache.cxf.jaxws.EndpointImpl;
 import org.apache.cxf.ws.security.wss4j.WSS4JInInterceptor;
-import org.apache.cxf.ws.security.wss4j.WSS4JOutInterceptor;
 import org.apache.wss4j.dom.WSConstants;
 import org.apache.wss4j.dom.handler.WSHandlerConstants;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Server {
+    private static Logger logger = LoggerFactory.getLogger(Server.class);
     protected Server() throws Exception {
-        System.out.println("Starting Server");
+        logger.info("Starting Server");
         HelloServiceImpl implementor = new HelloServiceImpl();
         String address = "http://localhost:9001/helloWorld";
         Endpoint.publish(address, implementor, new LoggingFeature());
@@ -59,4 +64,6 @@ public class Server {
     svrFactory.setServiceBean(implementor);
     svrFactory.create();
      */
+
+
 }
