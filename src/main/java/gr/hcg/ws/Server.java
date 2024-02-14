@@ -15,8 +15,9 @@ public class Server {
     protected Server() throws Exception {
         System.out.println("Starting Server");
         HelloServiceImpl implementor = new HelloServiceImpl();
-        String address = "http://localhost:9000/helloWorld";
+        String address = "http://localhost:9001/helloWorld";
         Endpoint.publish(address, implementor, new LoggingFeature());
+
         String address2 = "http://localhost:9000/helloWorld2";
         Endpoint.publish(address2, implementor, new LoggingFeature());
 
